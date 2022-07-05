@@ -6,12 +6,15 @@ body{
     background-color: #6116bd;
 }
 .header{
+    position: fixed;
+    width: 50%;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 25%;
     background-color: #6116bd;
+    z-index: 1;
 }
 
 .headerBtns{
@@ -19,37 +22,27 @@ body{
     font-weight: 700;
     font-size: 20px;
     cursor: pointer;
-    padding: 0 5px;
-    height: 25px;
     border-bottom: 3px solid transparent;
     user-select: none;
 }
 
-.headerBtns:hover{
-    border-bottom: 3px solid rgb(255, 225, 0);
-}
-
-.text{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 90px;
-    font-weight: 900;
-    width: 460px;
-    text-align: center;
-    color: rgb(255, 225, 0);
-    text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
-    animation: textAnim 2000ms;
-    animation-fill-mode: forwards;
-    animation-delay: 200ms;
-    position: absolute;
-    top: calc(50% - 60px);
-    left: calc(50% - 150px);
-}
-iframe{
-    margin: 0;
-    min-height: calc(100vh - 104px);
+.cont{
+    height: 100%;
     width: 100%;
 }
-
+.homeCont{
+    margin: 0;
+    height: calc(100% - 100px);
+    width: 100%;
+}
+a{
+    text-decoration: none;
+    height: 25px;
+    border-bottom: 3px solid transparent;
+}
+a:hover{
+    border-bottom: 3px solid rgb(255, 225, 0);
+}
 img{
     position: absolute;
     bottom: 0px;
@@ -57,9 +50,8 @@ img{
 
 .a{
     opacity: 0;
-    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.2));
     animation: anim1 1000ms;
-    animation-delay: 1000ms;
+    animation-delay: 200ms;
     animation-fill-mode: forwards;
 }
 
@@ -74,17 +66,6 @@ img{
     font-weight: 700;
     font-size: 40px;
     font-family: 'Indie Flower';
-}
-@keyframes textAnim {
-    0% { 
-        font-size: 90px;
-    }
-    100% {
-        font-size: 40px;
-        left: 0%;
-        top: 0%;
-        opacity: 0;
-    }
 }
 
 @keyframes anim1 {
