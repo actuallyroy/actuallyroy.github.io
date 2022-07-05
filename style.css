@@ -21,12 +21,12 @@ body{
     cursor: pointer;
     padding: 0 5px;
     height: 25px;
-    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
     user-select: none;
 }
 
 .headerBtns:hover{
-    border-right: 3px solid rgb(255, 225, 0);
+    border-bottom: 3px solid rgb(255, 225, 0);
 }
 
 .text{
