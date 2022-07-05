@@ -3,10 +3,11 @@ body{
     font-family: 'Comfortaa', cursive;
     margin: 0;
     height: 100vh;
-    background-color: #6116bd;
+
 }
 .header{
     position: fixed;
+    top: 0px;
     width: 50%;
     height: 100px;
     display: flex;
@@ -31,9 +32,7 @@ body{
     width: 100%;
 }
 .homeCont{
-    margin: 0;
-    height: calc(100% - 100px);
-    width: 100%;
+    background-color: #6116bd;
 }
 a{
     text-decoration: none;
