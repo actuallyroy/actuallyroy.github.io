@@ -49,7 +49,7 @@ img{
 
 .a{
     opacity: 0;
-    animation: anim1 1000ms;
+    animation: fadeIn 1000ms;
     animation-delay: 200ms;
     animation-fill-mode: forwards;
 }
@@ -65,13 +65,37 @@ img{
     font-weight: 700;
     font-size: 40px;
     font-family: 'Indie Flower';
+    text-shadow: 0px 0px 15px rgb(0, 0, 0, 0.2);
 }
 
-@keyframes anim1 {
-    0% { opacity: 0;
-    }
+.pImg{
+    position: absolute;
+    top: 20%;
+    left: 60%;
+}
 
+#workCont{
+    background-color: #7f349f;
+}
+#eduCont{
+    background-color: #9d5281;
+}
+#skillsCont{
+    background-color: #bb7063;
+}
+#blogCont{
+    background-color: #d98e45;
+}
+#contactCont{
+    background-color: #f7ac27;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0;
+        display: block;
+    }
     100% {
+        display: block;
         opacity: 1;
     }
     
