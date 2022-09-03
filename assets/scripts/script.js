@@ -1,15 +1,28 @@
 const headerBox = document.querySelector(".header");
+let headerBtns = document.querySelectorAll(".headerBtns")
+let conts = document.querySelectorAll(".cont")
 
-
+headerBtns[0].style.borderBottom = "3px solid white";
+headerBtns[0].style.color = "white";
 window.onscroll = () => {
-    var c = window.scrollY/(window.innerHeight*5)*150;
+  var c = window.scrollY / (window.innerHeight * 5) * 150;
+  let w = Math.floor(window.scrollY / window.innerHeight + 0.5)
+  for (var i = 0; i < headerBtns.length; i++){
+    if (i === w) {
+      headerBtns[w].style.borderBottom = "3px solid white";
+      headerBtns[w].style.color = 'white';
+    }
+    else {
+      headerBtns[i].style.borderBottom = "3px solid transparent";
+      headerBtns[i].style.color = '#ffffff99';
+    }
+  }
     headerBox.style.backgroundColor = `rgba(${97+c}, ${22+c}, ${189-c})`;
 
 }
   
 
-let headerBtns = document.querySelectorAll(".headerBtns")
-let conts = document.querySelectorAll(".cont")
+
 
 
 headerBtns.forEach((element, key) => {
@@ -22,19 +35,9 @@ let typeEffect = document.querySelector(".typeEffect")
 let caret = document.querySelector(".caret")
 typeEffect.focus()
 let words = [
-  'Websites.',
-  'Android apps.',
-  '3D models.',
-  'React',
-  'Vanilla JS',
-  'Node.js',
-  'HTML',
-  'CSS',
-  'Java',
-  'Python',
-  'Firebase',
-  'MongoDB',
-  'Express'
+  'eat()',
+  'sleep()',
+  'code()',
 ]
 let i = 0
 let backwords = 0;
@@ -50,9 +53,8 @@ let ci = setInterval(async () => {
     backwords = 0
   }
   let cWord = words[w]
-  console.log(i, cWord.length, backwords)
   if (i >= cWord.length) {
-    if (limit < 15) {
+    if (limit < cWord.length) {
       caret.style.animation = "blink1 1s normal 500ms infinite forwards";
       limit++
       backwords = 2
@@ -72,6 +74,52 @@ let ci = setInterval(async () => {
 
 }, 110)
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+
+fetch("https://api.github.com/users/actuallyroy/starred")
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(item => {
+      if (item.owner.login === 'actuallyroy') {
+        item.topics.length = 3
+        document.getElementById("cardsCont").innerHTML += `<div class="card">
+                <div class="card-title">${item.name}</div>
+                <div class="card-tags-cont">
+                  ${item.topics.map(topic => {
+                    return `<span class="card-tags">${topic}</span>`
+                  }).join("")}
+                </div>
+                <div class="card-ico-cont">
+                  <a href="${item.html_url}" target="_blank"><i class="bi bi-github ico"></i></a>
+                  <a href="https://github.com/actuallyroy/${item.name}/fork" target="_blank">
+                    <svg class="ico" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 8.125C12.5 8.62228 12.3025 9.0992 11.9508 9.45083C11.5992 9.80246 11.1223 10 10.625 10C10.1277 10 9.65082 9.80246 9.29919 9.45083C8.94756 9.0992 8.75001 8.62228 8.75001 8.125C8.75001 7.62772 8.94756 7.15081 9.29919 6.79918C9.65082 6.44755 10.1277 6.25 10.625 6.25C11.1223 6.25 11.5992 6.44755 11.9508 6.79918C12.3025 7.15081 12.5 7.62772 12.5 8.125V8.125ZM12.5 13.43C13.751 12.9877 14.8054 12.1174 15.4768 10.9729C16.1482 9.82833 16.3934 8.48331 16.169 7.1755C15.9446 5.8677 15.2651 4.68132 14.2506 3.82606C13.2361 2.97079 11.9519 2.5017 10.625 2.5017C9.2981 2.5017 8.0139 2.97079 6.9994 3.82606C5.9849 4.68132 5.3054 5.8677 5.08102 7.1755C4.85664 8.48331 5.10181 9.82833 5.7732 10.9729C6.4446 12.1174 7.49899 12.9877 8.75001 13.43V15.625C8.75001 17.1168 9.34264 18.5476 10.3975 19.6025C11.4524 20.6574 12.8832 21.25 14.375 21.25H18.125V26.57C16.8733 27.0123 15.8182 27.883 15.1464 29.028C14.4745 30.173 14.2291 31.5187 14.4535 32.8271C14.6779 34.1356 15.3576 35.3226 16.3726 36.1784C17.3876 37.0341 18.6724 37.5035 20 37.5035C21.3276 37.5035 22.6124 37.0341 23.6274 36.1784C24.6424 35.3226 25.3222 34.1356 25.5465 32.8271C25.7709 31.5187 25.5255 30.173 24.8536 29.028C24.1818 27.883 23.1267 27.0123 21.875 26.57V21.25H25.625C27.1169 21.25 28.5476 20.6574 29.6025 19.6025C30.6574 18.5476 31.25 17.1168 31.25 15.625V13.43C32.501 12.9877 33.5554 12.1174 34.2268 10.9729C34.8982 9.82833 35.1434 8.48331 34.919 7.1755C34.6946 5.8677 34.0151 4.68132 33.0006 3.82606C31.9861 2.97079 30.7019 2.5017 29.375 2.5017C28.0481 2.5017 26.7639 2.97079 25.7494 3.82606C24.7349 4.68132 24.0554 5.8677 23.831 7.1755C23.6066 8.48331 23.8518 9.82833 24.5232 10.9729C25.1946 12.1174 26.249 12.9877 27.5 13.43V15.625C27.5 16.1223 27.3025 16.5992 26.9508 16.9508C26.5992 17.3025 26.1223 17.5 25.625 17.5H14.375C13.8777 17.5 13.4008 17.3025 13.0492 16.9508C12.6976 16.5992 12.5 16.1223 12.5 15.625V13.43ZM21.875 31.875C21.875 32.3723 21.6775 32.8492 21.3258 33.2008C20.9742 33.5525 20.4973 33.75 20 33.75C19.5027 33.75 19.0258 33.5525 18.6742 33.2008C18.3226 32.8492 18.125 32.3723 18.125 31.875C18.125 31.3777 18.3226 30.9008 18.6742 30.5492C19.0258 30.1975 19.5027 30 20 30C20.4973 30 20.9742 30.1975 21.3258 30.5492C21.6775 30.9008 21.875 31.3777 21.875 31.875ZM29.375 10C29.8723 10 30.3492 9.80246 30.7008 9.45083C31.0525 9.0992 31.25 8.62228 31.25 8.125C31.25 7.62772 31.0525 7.15081 30.7008 6.79918C30.3492 6.44755 29.8723 6.25 29.375 6.25C28.8777 6.25 28.4008 6.44755 28.0492 6.79918C27.6976 7.15081 27.5 7.62772 27.5 8.125C27.5 8.62228 27.6976 9.0992 28.0492 9.45083C28.4008 9.80246 28.8777 10 29.375 10Z" fill="white"/>
+                    </svg>
+                  </a>
+                  <div></div>
+                  <a href="https://actuallyroy.github.io/${item.name}" target="_blank">
+                    <i class="bi bi-globe ico"></i>
+                  </a>
+                  <i class="bi bi-filetype-html ico"></i>
+                </div>
+              </div>`;
+      }
+    })
+  })
+
+let obj = [
+  "css",
+  "firebase",
+  "html",
+  "javasctipt",
+  "personal-website",
+  "portfolio",
+  "portfolio-website",
+  "resume",
+];
+
+let obj1 = obj.map((topic) => {
+  return `<span class="card-tags">${topic}</span>`;
+});
+
+console.log(obj1)
+  
