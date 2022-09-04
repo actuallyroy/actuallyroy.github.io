@@ -192,5 +192,5 @@ window.onmousemove = (e) => {
   let d = Math.sqrt((x - e.x) ** 2 + (y - e.y) ** 2)
   let d1 = Math.sqrt((x1 - e.x) ** 2 + (y1 - e.y) ** 2);
   r.style.opacity = 0.8 - d / 2000
-  l.style.opacity = 0.9 - d1 / 2000
+  l.style.opacity = 0.8 - d1 / 2000
 }
