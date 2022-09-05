@@ -172,25 +172,24 @@ work.onscroll = () => {
 }
 
 r.onclick = () => {
-  work.scrollLeft += 400
+  work.scrollLeft += 500
 }
  
 l.onclick = () => {
-  work.scrollLeft -= 400;
+  work.scrollLeft -= 500;
 };
 
 
-let rectR = r.getBoundingClientRect();
-let y = rectR.top + 30;
-let x = rectR.left + 30;
-let rectL = l.getBoundingClientRect();
-let y1 = rectL.top + 30;
-let x1 = rectL.left + 30;
 
 
 window.onmousemove = (e) => {
+  let rectR = r.getBoundingClientRect();
+  let rectL = l.getBoundingClientRect();
+  let y = rectR.top + 30;
+  let x = rectR.left + 30;
+  let x1 = rectL.left + 30;
   let d = Math.sqrt((x - e.x) ** 2 + (y - e.y) ** 2)
-  let d1 = Math.sqrt((x1 - e.x) ** 2 + (y1 - e.y) ** 2);
-  r.style.opacity = 0.8 - d / 2000
-  l.style.opacity = 0.8 - d1 / 2000
+  let d1 = Math.sqrt((x1 - e.x) ** 2 + (y - e.y) ** 2);
+  r.style.opacity = 0.8 - d.toPrecision(1) / 2000
+  l.style.opacity = 0.8 - d1.toPrecision(1) / 2000
 }

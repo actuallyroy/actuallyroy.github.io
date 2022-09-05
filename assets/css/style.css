@@ -54,6 +54,10 @@ body{
     height: 100vh;
     width: 100vw;
     white-space: nowrap;
+    width: 100vw;
+    overflow-y: hidden;
+    overflow-x: overlay;
+    scroll-behavior: smooth;
 }
 
 .home{
@@ -89,6 +93,7 @@ body{
     display: inline-block;
     position: relative;
     padding-top: 100px;
+    min-width: 100vw;
 }
 .cards-cont{
     display: grid;
@@ -118,8 +123,8 @@ body{
     -webkit-user-select: none;
     user-select: none;
 }
-.card:hover{
-    scale: 1.05;
+.card:hover, .edu-card:hover{
+    scale: 1.03;
 }
 
 .card-title{
@@ -165,6 +170,7 @@ body{
     transform: rotateY(-180deg);
 }
 .card-description{
+    text-overflow: clip;
     white-space: pre-line;
 }
 
@@ -191,14 +197,15 @@ a{
     margin: 20px;
     top: calc(150vh);
     opacity: 0.04;
-    filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.56));
+    filter: drop-shadow(30px 30px 20px rgba(0, 0, 0, 0.66));
     transition: 150ms opacity ease-in;
 }
 .l{
     display: none;
+    left: 10px;
 }
 .r{
-    right: 0;
+    right: 10px;
 }
 .rl-btn::before{
     font-size: 60px;
@@ -210,13 +217,9 @@ a{
 
 #work{
     background-color: #7f349f;
-    width: 100vw;
-    overflow-y: hidden;
-    overflow-x: overlay;
-    scroll-behavior: smooth;
 }
 #edu{
-    background-color: #9d5281;
+    background-color: #9d5281;;
 }
 #skills{
     background-color: #bb7063;
@@ -258,6 +261,12 @@ a{
     
 }
 
+.typeEffCont{
+    display: flex;
+    height: 50px;
+    align-items: flex-end;
+}
+
 .typeEffect{
     background-color: transparent;
     color: white;
@@ -266,6 +275,8 @@ a{
     font-size: 50px;
     outline: none;
     font-family: 'Mono Lisa';
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .caret{
@@ -305,6 +316,7 @@ a{
     .headerBtns{
         font-size: small;
         height: 15px;
+        border-width: 2px !important
     }
     .cards-cont{
         grid-template-rows: 1fr 1fr 1fr;
@@ -313,4 +325,64 @@ a{
         width: 380px;
         height: 200px;
     }
+    .rl-btn{
+        visibility: hidden;
+    }
+}
+
+
+.edu-cards-cont{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    align-items: center;
+    justify-items: center;
+    grid-auto-flow: row;
+}
+
+.edu-card{
+    height: 250px;
+    width: 600px;
+    display: flex;
+    border-radius: 25px 0 0 25px;
+    box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.06);
+    transition: 200ms scale ease-in;
+    overflow: hidden;
+}
+
+.edu-img-cont, .edu-des-cont{
+    width: 45%;
+    height: 100%;
+    overflow: hidden;
+}
+.edu-des-cont{
+    width: 55%;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.edu-des-cont :nth-child(1){
+    color: white;
+    font-size: 25px;
+}
+.edu-des-cont > div > b, .edu-des-cont :nth-child(3) {
+    font-size: 15px !important
+}
+
+
+.edu-img-cont > img{
+    border-radius: 25px 0 0 25px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: 300ms scale ease-in;
+}
+
+.edu-img-cont > img:hover{
+    scale: 1.1;
 }
