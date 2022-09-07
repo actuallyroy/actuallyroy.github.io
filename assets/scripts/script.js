@@ -193,3 +193,27 @@ window.onmousemove = (e) => {
   r.style.opacity = 0.8 - d.toPrecision(1) / 2000
   l.style.opacity = 0.8 - d1.toPrecision(1) / 2000
 }
+const udemyCertificates = {
+  'Complete Python Programming for Beginners - 2022': "UC-fac812cb-35c4-4b11-b4b1-bb28dfec7b9a",
+  'CSS, Bootstrap, JavaScript And PHP Stack Complete Course': 'UC-6e84da9c-6b75-4f42-a3e9-3694bfa281d8',
+  'Linux Command Line Terminal Basic for Beginners': 'UC-2fac4520-dd43-44b4-a9b6-5f9d17a347aa',
+  'Introduction to Quantum Computing': 'UC-2bce6652-0c04-4e27-b68f-d3f2b35036b4'
+}
+
+Object.keys(udemyCertificates).forEach(certsTitle => {
+  document.getElementById("cert-cont").innerHTML += `<div class="certs">
+          <div><span>${truncateString(certsTitle, 35)}</span><br>
+            <a href="https://ude.my/${udemyCertificates[certsTitle]}/" target="_blank">
+              <img class="cert-img" alt="Udemy Certificate" src = "https://udemy-certificate.s3.amazonaws.com/image/${udemyCertificates[certsTitle]}.jpg"/>
+            </a>
+          </div>
+        </div>`;
+})
+
+function truncateString(str, num) {
+  if (str.length > num) {
+    return str.slice(0, num) + "...";
+  } else {
+    return str;
+  }
+}

@@ -332,15 +332,14 @@ a{
 
 
 .edu-cards-cont{
-    height: 100%;
-    width: 100%;
+    height: calc(50% - 35px);
+    width: 100vw;
     display: grid;
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
+    grid-gap: 15px;
     align-items: center;
     justify-items: center;
-    grid-auto-flow: row;
+    grid-auto-flow: column;
 }
 
 .edu-card{
@@ -385,4 +384,39 @@ a{
 
 .edu-img-cont > img:hover{
     scale: 1.1;
+}
+
+.cert-cont{
+    grid-template-columns: auto;
+    width: 100%;
+    justify-items: left;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.certs{
+    height: 100%;
+    width: 400px;
+    text-align: center;
+    color: white;
+    transition: 100ms scale ease-in;
+}
+.cert-img{
+    width: 300px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+}
+
+.labeltext{
+    margin-left: 20px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    border-bottom: 1px solid white;
+    width: 400px;
+}
+
+.certs:hover{
+    scale: 1.03
 }
