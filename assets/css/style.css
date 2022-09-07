@@ -3,6 +3,10 @@
     font-family: 'Mono Lisa';
     src: url('../fonts/MonoLisa-Regular.ttf');
 }
+@font-face {
+    font-family: "MyFont";
+    src: url("../fonts/MyFont.ttf");
+}
 @import url('http://fonts.cdnfonts.com/css/dm-serif-display');
 
 body{
@@ -10,6 +14,19 @@ body{
     margin: 0;
     height: 100vh;
     overflow: overlay;
+}
+
+.sig{
+    position: absolute;
+    bottom: 0;
+    z-index: 99;
+    right: 0;
+    padding: 20px;
+    font-family: 'MyFont';
+    color: white;
+    font-size: 20px;
+    -webkit-user-select: none;
+    user-select: none;
 }
 *::-webkit-scrollbar{
     height: 0px;
@@ -134,13 +151,18 @@ body{
 }
 .card-tags-cont{
     height: calc(100% - 78px);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 .card-tags{
+    height: 15px;
     padding: 10px 30px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.114);
     border-radius: 50px;
     margin-right: 5px;
+    margin-bottom: 5px;
     font-size: small;
 }
 .card-ico-cont{
@@ -332,18 +354,19 @@ a{
 
 
 .edu-cards-cont{
-    height: calc(50% - 35px);
-    width: 100vw;
+    height: 100%;
+    padding-left: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
     align-items: center;
     justify-items: center;
     grid-auto-flow: column;
+    overflow-x: auto;
 }
 
 .edu-card{
-    height: 250px;
+    height: 75%;
     width: 600px;
     display: flex;
     border-radius: 25px 0 0 25px;
@@ -384,14 +407,21 @@ a{
 
 .edu-img-cont > img:hover{
     scale: 1.1;
+
+}
+
+.edu-sub-cont{
+    height: calc(50% - 50px);
+    width: 100vw;
 }
 
 .cert-cont{
     grid-template-columns: auto;
-    width: 100%;
+    width: 100vw;
     justify-items: left;
     padding: 20px;
     box-sizing: border-box;
+    overflow: scroll;
 }
 
 .certs{

@@ -92,7 +92,7 @@ fetch("https://api.github.com/users/actuallyroy/starred")
       if (item.description)
         des = item.description
       if (item.owner.login === 'actuallyroy') {
-        item.topics.length = 3
+        item.topics.length = 5
         document.getElementById("cardsCont").innerHTML += `<div class="card">
           <div class="card-front">
             <div class="card-title">${item.name}</div>
@@ -200,6 +200,23 @@ const udemyCertificates = {
   'Introduction to Quantum Computing': 'UC-2bce6652-0c04-4e27-b68f-d3f2b35036b4'
 }
 
+const certificates = {
+  ProGrad: '/assets/images/ProGrad.png',
+  CSS: "https://www.hackerrank.com/certificates/51e3e774a151",
+  "Problem Solving": "https://www.hackerrank.com/certificates/7e26e25936c3",
+  Python: "https://www.hackerrank.com/certificates/2891c0e71f9c",
+};
+
+Object.keys(certificates).forEach(certsTitle => {
+   document.getElementById("cert-cont").innerHTML += `<div class="certs">
+          <div><span>${truncateString(certsTitle, 35)}</span><br>
+            <a href="${certificates[certsTitle]}" target="_blank">
+              <img class="cert-img" alt="Udemy Certificate" src = "/assets/images/${certsTitle}.png"/>
+            </a>
+          </div>
+        </div>`;
+})
+
 Object.keys(udemyCertificates).forEach(certsTitle => {
   document.getElementById("cert-cont").innerHTML += `<div class="certs">
           <div><span>${truncateString(certsTitle, 35)}</span><br>
@@ -210,6 +227,7 @@ Object.keys(udemyCertificates).forEach(certsTitle => {
         </div>`;
 })
 
+
 function truncateString(str, num) {
   if (str.length > num) {
     return str.slice(0, num) + "...";
@@ -217,3 +235,4 @@ function truncateString(str, num) {
     return str;
   }
 }
+
