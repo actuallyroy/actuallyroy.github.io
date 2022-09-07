@@ -411,7 +411,7 @@ a{
 }
 
 .edu-sub-cont{
-    height: calc(50% - 50px);
+    height: calc(50% - 70px);
     width: 100vw;
 }
 
@@ -429,7 +429,7 @@ a{
     width: 400px;
     text-align: center;
     color: white;
-    transition: 100ms scale ease-in;
+    transition: 200ms transform ease-in;
 }
 .cert-img{
     width: 300px;
@@ -448,5 +448,5 @@ a{
 }
 
 .certs:hover{
-    scale: 1.03
+    transform: scale(1.03);
 }
