@@ -236,3 +236,11 @@ function truncateString(str, num) {
   }
 }
 
+
+
+const bigImg = document.getElementById("bigImg")
+bigImg.src = "./assets/images/img.png";
+bigImg.onload = () => {
+  console.log(bigImg)
+  bigImg.style.animation = "fadeIn1 1000ms forwards";
+}

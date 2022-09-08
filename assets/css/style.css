@@ -103,7 +103,6 @@ body{
     right: 0;
     bottom: 0;
     opacity: 0;
-    animation: fadeIn1 1000ms 1000ms forwards;
 }
 .subcont{
     height: calc(100vh - 100px);
