@@ -205,6 +205,7 @@ const certificates = {
   CSS: "https://www.hackerrank.com/certificates/51e3e774a151",
   "Problem Solving": "https://www.hackerrank.com/certificates/7e26e25936c3",
   Python: "https://www.hackerrank.com/certificates/2891c0e71f9c",
+  JavaScript: 'https://www.hackerrank.com/certificates/dbc0de668048'
 };
 
 Object.keys(certificates).forEach(certsTitle => {
