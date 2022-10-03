@@ -134,7 +134,7 @@ body{
     margin: 0 30px;
     padding: 30px;
     box-sizing: border-box;
-    transition: 200ms scale ease-in;
+    transition: 200ms all ease-in;
     transform-style: preserve-3d;
     -webkit-user-select: none;
     user-select: none;
@@ -209,6 +209,7 @@ a{
     margin-right: 5px;
     font-size: 40px;
     cursor: pointer;
+    height: 45px;
 }
 
 .rl-btn{
@@ -448,4 +449,42 @@ a{
 
 .certs:hover{
     transform: scale(1.03);
+}
+
+.skills-cont{
+    height: 100%;
+    width: 100%;
+    padding: 50px 80px;
+    box-sizing: border-box;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+    overflow-x: auto;
+}
+
+.skills-card{
+    display: flex;
+    flex-wrap: wrap;
+    height: 200px;
+    width: 350px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.16);
+}
+
+.skills-card-img{
+    height: 75%;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    object-fit: cover;
+}
+
+.card-pad{
+    height: 25%;
+    width: 100%;
+    background-color: rgb(246, 246, 246);
+    padding: 15px 0 0 20px;
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
 }
