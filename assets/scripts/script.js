@@ -59,6 +59,7 @@ const skillsArr = [
   "C",
   "C++",
   "Java",
+  "Android Studio",
   "Python",
   "Assembly",
   "Excel",
@@ -69,9 +70,10 @@ const skillsArr = [
   "Firebase",
   "MongoDB",
   "NoSQL",
-  "React",
+  "ReactJS",
   "Express",
   "NodeJS",
+  "Heroku",
 ]
 
 
