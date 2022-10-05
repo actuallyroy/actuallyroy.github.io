@@ -488,3 +488,43 @@ a{
     border-radius: 0 0 5px 5px;
     box-sizing: border-box;
 }
+
+.contacts-page{
+    margin-top: 80px;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.big-name, .big-name+div{
+    font-family: 'Century Gothic';
+    font-size: 22px;
+}
+.big-name{
+
+    font-size: 70px;
+    font-weight: bold;
+}
+.c-logo-cont{
+    margin-top: 80px;
+}
+
+
+.c-logo{
+    font-size: 60px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.c-logo:hover{
+    filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.468));
+}
+
+.line{
+    margin-top: 150px;
+    background-color: black;
+    height: 5px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.358);
+    width: 500px;
+    margin-left: calc(50% - 250px);
+}
