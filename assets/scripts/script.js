@@ -56,6 +56,7 @@ const skillsArr = [
   "HTML",
   "CSS",
   "Illustrations",
+  "Animation",
   "C",
   "C++",
   "Java",
@@ -74,6 +75,11 @@ const skillsArr = [
   "Express",
   "NodeJS",
   "Heroku",
+  "Git",
+  "GitHub",
+  "VS Code",
+  "Figma",
+  "Adobe XD",
 ]
 
 
@@ -116,7 +122,7 @@ function typeEffectAnim() {
   let backwords = 0;
   let w = 0;
   let limit = 0;
-  let ci = setInterval(async () => {
+  setInterval(async () => {
     if (i <= 0 && backwords === 1) {
       if (w >= words.length - 1) {
         w = -1;

@@ -14,20 +14,9 @@ body{
     margin: 0;
     height: 100vh;
     overflow: overlay;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.sig{
-    position: absolute;
-    bottom: 0;
-    z-index: 99;
-    right: 0;
-    padding: 20px;
-    font-family: 'MyFont';
-    color: white;
-    font-size: 20px;
-    -webkit-user-select: none;
-    user-select: none;
-}
 *::-webkit-scrollbar{
     height: 0px;
     width: 3px;
@@ -253,36 +242,6 @@ a{
     background-color: #f7ac27;
 }
 
-@keyframes anim {
-    0%{
-        color: #ffffffaa;
-    }
-    100%{
-        color: #ffffff;
-    }
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0;
-        display: block;
-    }
-    100% {
-        display: block;
-        opacity: 1;
-    }
-    
-}
-@keyframes fadeIn1 {
-    0% { opacity: 0;
-        display: block;
-    }
-    100% {
-        display: block;
-        opacity: 0.5;
-    }
-    
-}
-
 .typeEffCont{
     display: flex;
     height: 50px;
@@ -307,51 +266,6 @@ a{
     background-color: white;
     animation: blink1 1s normal 1s infinite forwards;
 }
-
-@keyframes blink1 {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-
-@keyframes flipLeft {
-    100%{
-        transform: rotateY(-180deg)
-    }
-}
-
-@keyframes flipRight {
-    0%{
-        transform: rotateY(-180deg);
-    }
-    100%{
-        transform: rotateY(0deg);
-    }
-    
-}
-
-
-@media (max-width: 550px) {
-    .headerBtns{
-        font-size: small;
-        height: 15px;
-        border-width: 2px !important
-    }
-    .cards-cont{
-        grid-template-rows: 1fr 1fr 1fr;
-    }
-    .card{
-        width: 380px;
-        height: 200px;
-    }
-    .rl-btn{
-        visibility: hidden;
-    }
-}
-
 
 .edu-cards-cont{
     height: 100%;
@@ -460,7 +374,7 @@ a{
     grid-auto-flow: column;
     grid-gap: 50px;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
     overflow-x: auto;
 }
 
@@ -527,4 +441,91 @@ a{
     box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.358);
     width: 500px;
     margin-left: calc(50% - 250px);
+}
+
+@keyframes blink1 {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes flipLeft {
+    100%{
+        transform: rotateY(-180deg)
+    }
+}
+
+@keyframes flipRight {
+    0%{
+        transform: rotateY(-180deg);
+    }
+    100%{
+        transform: rotateY(0deg);
+    }
+    
+}
+
+@keyframes anim {
+    0%{
+        color: #ffffffaa;
+    }
+    100%{
+        color: #ffffff;
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0;
+        display: block;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+    
+}
+@keyframes fadeIn1 {
+    0% { opacity: 0;
+        display: block;
+    }
+    100% {
+        display: block;
+        opacity: 0.5;
+    }
+    
+}
+
+
+@media (max-width: 550px) {
+    .headerBtns{
+        font-size: small;
+        height: 15px;
+        border-width: 2px !important
+    }
+    .cards-cont{
+        grid-template-rows: 1fr 1fr 1fr;
+        padding-left: 20px;
+        padding-right: 0px;
+    }
+    .card{
+        width: 380px;
+        height: 200px;
+    }
+    .rl-btn{
+        visibility: hidden;
+    }
+    .big-name{
+        font-size: 50px;
+    }
+    .c-logo{
+        margin: 5px;
+        font-size: 40px;
+    }
+    .line{
+        width: 300px;
+        margin-left: calc(50% - 150px);
+    }
 }
