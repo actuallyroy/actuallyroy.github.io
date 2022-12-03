@@ -2,8 +2,8 @@
 
 //Constants//
 const headerBox = document.querySelector(".header");
-const headerBtns = document.querySelectorAll(".headerBtns")
-const conts = document.querySelectorAll(".cont")
+const headerBtns = document.querySelectorAll(".headerBtns");
+const conts = document.querySelectorAll(".cont");
 const typeEffect = document.querySelector(".typeEffect");
 const caret = document.querySelector(".caret");
 const work = document.getElementById("work");
@@ -34,11 +34,15 @@ const projTypIcon = {
 
 //Udemy Certificates Images already provided from the website//
 const udemyCertificates = {
-  'Complete Python Programming for Beginners - 2022': "UC-fac812cb-35c4-4b11-b4b1-bb28dfec7b9a",
-  'CSS, Bootstrap, JavaScript And PHP Stack Complete Course': 'UC-6e84da9c-6b75-4f42-a3e9-3694bfa281d8',
-  'Linux Command Line Terminal Basic for Beginners': 'UC-2fac4520-dd43-44b4-a9b6-5f9d17a347aa',
-  'Introduction to Quantum Computing': 'UC-2bce6652-0c04-4e27-b68f-d3f2b35036b4'
-}
+  "Complete Python Programming for Beginners - 2022":
+    "UC-fac812cb-35c4-4b11-b4b1-bb28dfec7b9a",
+  "CSS, Bootstrap, JavaScript And PHP Stack Complete Course":
+    "UC-6e84da9c-6b75-4f42-a3e9-3694bfa281d8",
+  "Linux Command Line Terminal Basic for Beginners":
+    "UC-2fac4520-dd43-44b4-a9b6-5f9d17a347aa",
+  "Introduction to Quantum Computing":
+    "UC-2bce6652-0c04-4e27-b68f-d3f2b35036b4",
+};
 
 //Other certificates - Image not provided//
 const certificates = {
@@ -48,7 +52,6 @@ const certificates = {
   Python: "https://www.hackerrank.com/certificates/2891c0e71f9c",
   JavaScript: "https://www.hackerrank.com/certificates/dbc0de668048",
 };
-
 
 //Skills
 const skillsArr = [
@@ -80,41 +83,32 @@ const skillsArr = [
   "VS Code",
   "Figma",
   "Adobe XD",
-]
-
-
-
-
+];
 
 /////////////////////////////////////////////////Code////////////////////////////////////////////////////////////////
 
 headerBtns[0].style.borderBottom = "3px solid white";
 headerBtns[0].style.color = "white";
 window.onscroll = () => {
-  var c = window.scrollY / (window.innerHeight * 5) * 150;
-  let w = Math.floor(window.scrollY / window.innerHeight + 0.5)
-  for (var i = 0; i < headerBtns.length; i++){
+  var c = (window.scrollY / (window.innerHeight * 5)) * 150;
+  let w = Math.floor(window.scrollY / window.innerHeight + 0.5);
+  for (var i = 0; i < headerBtns.length; i++) {
     if (i === w) {
       headerBtns[w].style.borderBottom = "3px solid white";
-      headerBtns[w].style.color = 'white';
-    }
-    else {
+      headerBtns[w].style.color = "white";
+    } else {
       headerBtns[i].style.borderBottom = "3px solid transparent";
-      headerBtns[i].style.color = '#ffffff99';
+      headerBtns[i].style.color = "#ffffff99";
     }
   }
-  headerBox.style.backgroundColor = `rgba(${97+c}, ${22+c}, ${189-c})`;
-
-}
-  
+  headerBox.style.backgroundColor = `rgba(${97 + c}, ${22 + c}, ${189 - c})`;
+};
 
 headerBtns.forEach((element, key) => {
   element.onclick = () => {
-    conts[key].scrollIntoView({behavior: "smooth"})
-  }
+    conts[key].scrollIntoView({ behavior: "smooth" });
+  };
 });
-
-
 
 //Typing Effect Animation//
 function typeEffectAnim() {
@@ -154,20 +148,18 @@ function typeEffectAnim() {
       i--;
     }
   }, 110);
-
 }
 
 typeEffectAnim();
 
-
 //Fetch Repositories from github//
 fetch("https://api.github.com/users/actuallyroy/starred")
-  .then(response => response.json())
-  .then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     //Show repositories on 'My Works' page
-    data.forEach(item => {
+    data.forEach((item) => {
       //Filter only My project//
-      if (item.owner.login === 'actuallyroy') {
+      if (item.owner.login === "actuallyroy") {
         //Determine Ptoject Type//
         let projT = undefined;
         if (item.topics.includes("website")) projT = "website";
@@ -179,9 +171,8 @@ fetch("https://api.github.com/users/actuallyroy/starred")
         //Description//
         let des = "";
         if (item.description) des = item.description;
-        
-        
-        item.topics.length = 5;               //Truncate topics array length to 5
+
+        item.topics.length = 5; //Truncate topics array length to 5
 
         //Set cards
         document.getElementById("cardsCont").innerHTML += `<div class="card">
@@ -219,46 +210,51 @@ fetch("https://api.github.com/users/actuallyroy/starred")
           </div>
         </div>`;
       }
-    })
-    
+    });
+
     //Set flip animation on cards//
-    const cards = document.querySelectorAll(".card")
-    cards.forEach(card => {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
       card.addEventListener("click", () => {
-        if (card.style.animation == "800ms ease 0s 1 normal forwards running flipLeft") {
+        if (
+          card.style.animation ==
+          "800ms ease 0s 1 normal forwards running flipLeft"
+        ) {
           card.style.animation = "800ms flipRight forwards";
         } else {
           card.style.animation = "800ms flipLeft forwards";
         }
-      })
-      card.firstElementChild.nextElementSibling.addEventListener("mouseout", () => {
-        card.style.animation = "800ms flipRight forwards";
-      })
-    })
-})
+      });
+      card.firstElementChild.nextElementSibling.addEventListener(
+        "mouseout",
+        () => {
+          card.style.animation = "800ms flipRight forwards";
+        }
+      );
+    });
+  });
 
 //Control visibility of left right button in works section//
 work.onscroll = () => {
   if (work.scrollLeft > 100) {
-    l.style.display = 'block'
+    l.style.display = "block";
   } else {
     l.style.display = "none";
   }
   if (work.scrollLeft > work.scrollWidth - window.innerWidth - 100) {
-    r.style.display = 'none'
+    r.style.display = "none";
   } else {
     r.style.display = "block";
   }
-}
+};
 //Right button
 r.onclick = () => {
-  work.scrollLeft += 500
-}
+  work.scrollLeft += 500;
+};
 //Left Button
 l.onclick = () => {
   work.scrollLeft -= 500;
 };
-
 
 //Set opacity of left, right button on mouse move. Based on the distance//
 window.onmousemove = (e) => {
@@ -267,49 +263,47 @@ window.onmousemove = (e) => {
   let y = rectR.top + 30;
   let x = rectR.left + 30;
   let x1 = rectL.left + 30;
-  let d = Math.sqrt((x - e.x) ** 2 + (y - e.y) ** 2)
+  let d = Math.sqrt((x - e.x) ** 2 + (y - e.y) ** 2);
   let d1 = Math.sqrt((x1 - e.x) ** 2 + (y - e.y) ** 2);
-  r.style.opacity = 0.8 - d.toPrecision(1) / 2000
-  l.style.opacity = 0.8 - d1.toPrecision(1) / 2000
-}
-
+  r.style.opacity = 0.8 - d.toPrecision(1) / 2000;
+  l.style.opacity = 0.8 - d1.toPrecision(1) / 2000;
+};
 
 //Show other certificates in Education section//
-Object.keys(certificates).forEach(certsTitle => {
-   document.getElementById("cert-cont").innerHTML += `<div class="certs">
+Object.keys(certificates).forEach((certsTitle) => {
+  document.getElementById("cert-cont").innerHTML += `<div class="certs">
           <div><span>${truncateString(certsTitle, 35)}</span><br>
             <a href="${certificates[certsTitle]}" target="_blank">
               <img class="cert-img" alt="Udemy Certificate" src = "/assets/images/${certsTitle}.png"/>
             </a>
           </div>
         </div>`;
-})
-
+});
 
 //Show Udemy Certificates in Education Section
-Object.keys(udemyCertificates).forEach(certsTitle => {
+Object.keys(udemyCertificates).forEach((certsTitle) => {
   document.getElementById("cert-cont").innerHTML += `<div class="certs">
           <div><span>${truncateString(certsTitle, 35)}</span><br>
-            <a href="https://ude.my/${udemyCertificates[certsTitle]}/" target="_blank">
-              <img class="cert-img" alt="Udemy Certificate" src = "https://udemy-certificate.s3.amazonaws.com/image/${udemyCertificates[certsTitle]}.jpg"/>
+            <a href="https://ude.my/${
+              udemyCertificates[certsTitle]
+            }/" target="_blank">
+              <img class="cert-img" alt="Udemy Certificate" src = "https://udemy-certificate.s3.amazonaws.com/image/${
+                udemyCertificates[certsTitle]
+              }.jpg"/>
             </a>
           </div>
         </div>`;
-})
+});
 
-
-
-
-skillsArr.forEach(skill => {
+skillsArr.forEach((skill) => {
   skillsCont.innerHTML += `<div class="skills-card">
-            <img class="skills-card-img" src="./assets/images/skills/${skill.replace("#", "%23")}.png">
+            <img class="skills-card-img" src="./assets/images/skills/${skill.replace(
+              "#",
+              "%23"
+            )}.png">
             <div class="card-pad">${skill}</div>
           </div>`;
-})
-
-
-
-
+});
 
 //Function to truncate string
 function truncateString(str, num) {
@@ -320,13 +314,99 @@ function truncateString(str, num) {
   }
 }
 
-
-
-
 //Animate Big Image only after it loads completely//
-const bigImg = document.getElementById("bigImg")
+const bigImg = document.getElementById("bigImg");
 bigImg.src = "./assets/images/img.png";
 bigImg.onload = () => {
   bigImg.style.animation = "fadeIn1 1s 1s forwards";
-  
+};
+
+// how to get device info of user?
+// console.log(navigator.geolocation.getCurrentPosition((res) =>{
+//   console.log(res);
+// }))
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDocs,
+  collection
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBoq7N-sk_fhhpIhdfnRh-hhGB-TyW1fVA",
+  authDomain: "test-d8536.firebaseapp.com",
+  databaseURL: "https://test-d8536-default-rtdb.firebaseio.com",
+  projectId: "test-d8536",
+  storageBucket: "test-d8536.appspot.com",
+  messagingSenderId: "1007906966273",
+  appId: "1:1007906966273:web:a0639e0be6fc2400376900",
+  measurementId: "G-3L7L76NC7J",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+let stored = localStorage.getItem("stored");
+
+if (stored === null) {
+  //Get location of user
+  fetch("https://ipapi.co/json/")
+    .then((res) => res.json())
+    .then((data) => {
+      const viewersRef = doc(db, "viewers", data.ip);
+      setDoc(
+        viewersRef,
+        {
+          ip: data.ip,
+          network: data.network,
+          version: data.version,
+          city: data.city,
+          region: data.region,
+          region_code: data.region_code,
+          country: data.country,
+          country_name: data.country_name,
+          country_code: data.country_code,
+          country_code_iso3: data.country_code_iso3,
+          country_capital: data.country_capital,
+          country_tld: data.country_tld,
+          continent_code: data.continent_code,
+          in_eu: data.in_eu,
+          postal: data.postal,
+          latitude: data.latitude,
+          longitude: data.longitude,
+          timezone: data.timezone,
+          utc_offset: data.utc_offset,
+          country_calling_code: data.country_calling_code,
+          currency: data.currency,
+          currency_name: data.currency_name,
+          languages: data.languages,
+          country_area: data.country_area,
+          country_population: data.country_population,
+          asn: data.asn,
+          org: data.org,
+        },
+        { merge: true }
+      ).then(() => {
+        localStorage.setItem("stored", true);
+      })
+    });
 }
+
+//Get all viewers
+const viewersRef = collection(db, "viewers");
+getDocs(viewersRef).then((doc) => {
+  let viewers = doc.docs.length;
+  document.querySelector(".viewCount").style.display = "block"
+  document.getElementById("vCount").innerHTML = viewers;
+});
