@@ -215,27 +215,18 @@ fetch("https://api.github.com/users/actuallyroy/starred")
     //Set flip animation on cards//
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
-      card.addEventListener("click", () => {
-        if (
-          card.style.animation ==
-          "800ms ease 0s 1 normal forwards running flipLeft"
-        ) {
-          card.style.animation = "800ms flipRight forwards";
-        } else {
-          card.style.animation = "800ms flipLeft forwards";
+      card.onclick = () => {
+        card.classList.toggle("is-flipped");
+      };
+      card.firstElementChild.nextElementSibling.onmouseout = () => {
+          card.classList.remove("is-flipped");
         }
-      });
-      card.firstElementChild.nextElementSibling.addEventListener(
-        "mouseout",
-        () => {
-          card.style.animation = "800ms flipRight forwards";
-        }
-      );
     });
   });
 
 //Control visibility of left right button in works section//
 work.onscroll = () => {
+  console.log(work.scrollLeft);
   if (work.scrollLeft > 100) {
     l.style.display = "block";
   } else {
@@ -368,7 +359,6 @@ if (stored === null) {
       setDoc(
         viewersRef,
         {
-          ip: data.ip,
           network: data.network,
           version: data.version,
           city: data.city,
@@ -376,10 +366,7 @@ if (stored === null) {
           region_code: data.region_code,
           country: data.country,
           country_name: data.country_name,
-          country_code: data.country_code,
           country_code_iso3: data.country_code_iso3,
-          country_capital: data.country_capital,
-          country_tld: data.country_tld,
           continent_code: data.continent_code,
           in_eu: data.in_eu,
           postal: data.postal,
@@ -389,12 +376,8 @@ if (stored === null) {
           utc_offset: data.utc_offset,
           country_calling_code: data.country_calling_code,
           currency: data.currency,
-          currency_name: data.currency_name,
-          languages: data.languages,
-          country_area: data.country_area,
-          country_population: data.country_population,
-          asn: data.asn,
           org: data.org,
+          date: new Date()
         },
         { merge: true }
       ).then(() => {
@@ -403,10 +386,37 @@ if (stored === null) {
     });
 }
 
-//Get all viewers
-const viewersRef = collection(db, "viewers");
-getDocs(viewersRef).then((doc) => {
-  let viewers = doc.docs.length;
-  document.querySelector(".viewCount").style.display = "block"
-  document.getElementById("vCount").innerHTML = viewers;
-});
+// //Get all viewers
+// const viewersRef = collection(db, "viewers");
+// getDocs(viewersRef).then((doc) => {
+//   let viewers = doc.docs.length;
+//   document.querySelector(".viewCount").style.display = "block"
+//   document.getElementById("vCount").innerHTML = viewers;
+// });
+
+
+const blogs = [
+  {
+    title: "Website Builder",
+    desc: "A website builder is a software application that allows the construction of websites without manual code editing. Website builders are usually WYSIWYG (what you see is what you get) tools that allow the user to drag and drop elements onto a page. Website builders are often used by non-technical users who want to build a website without having to learn how to code.",
+    image_link: "./assets/images/blogs/website-builder.jpg",
+    date: new Date(1670168390927),
+  },
+  {
+    title: "Blogs for my portfolio",
+    desc: "Blogs are a great way to show your knowledge and expertise in a particular field. They are also a great way to get your name out there and get noticed by potential employers. Blogs are a great way to show your knowledge and expertise in a particular field. They are also a great way to get your name out there and get noticed by potential employers.",
+    image_link: "./assets/images/blogs/blogs.jpg",
+    date: new Date(1670168390927),
+  }
+]
+
+
+blogs.forEach(blog => {
+  document.getElementById("blog-cont").innerHTML += ` <div class="blog-card">
+  <div class="blog-title">${blog.title}</div>
+  <img src="${blog.image_link}">
+  <div class="blog-body">${truncateString(blog.desc, 138)}</div>
+  <div class="blog-date">${blog.date.toUTCString().substring(0, 16)}</div>
+  <i class="bi bi-hand-thumbs-up-fill"></i>
+</div>`
+})
