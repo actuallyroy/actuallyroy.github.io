@@ -386,13 +386,13 @@ if (stored === null) {
     });
 }
 
-// //Get all viewers
-// const viewersRef = collection(db, "viewers");
-// getDocs(viewersRef).then((doc) => {
-//   let viewers = doc.docs.length;
-//   document.querySelector(".viewCount").style.display = "block"
-//   document.getElementById("vCount").innerHTML = viewers;
-// });
+//Get all viewers
+const viewersRef = collection(db, "viewers");
+getDocs(viewersRef).then((doc) => {
+  let viewers = doc.docs.length;
+  document.querySelector(".viewCount").style.display = "block"
+  document.getElementById("vCount").innerHTML = viewers;
+});
 
 
 const blogs = [
