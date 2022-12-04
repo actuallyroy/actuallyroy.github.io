@@ -455,6 +455,27 @@ a{
     }
 }
 
+@keyframes fadeIn {
+    0% { opacity: 0;
+        display: block;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+    
+}
+@keyframes fadeIn1 {
+    0% { opacity: 0;
+        display: block;
+    }
+    100% {
+        display: block;
+        opacity: 0.5;
+    }
+    
+}
+
 
 @media (max-width: 550px) {
     .headerBtns{
@@ -465,7 +486,7 @@ a{
     .cards-cont{
         grid-gap: 10px 20px;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: repeat(auto-fill, minmax(170px, 1fr));
         padding-right: 0px;
     }
     .card-tags{
