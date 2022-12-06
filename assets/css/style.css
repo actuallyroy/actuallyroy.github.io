@@ -94,12 +94,14 @@ body{
     opacity: 0;
 }
 .subcont{
+    overflow: hidden;
     height: calc(100vh - 100px);
     display: inline-block;
     position: relative;
     padding-top: 100px;
 }
 .cards-cont{
+    overflow: hidden;
     perspective: 2000px;
     grid-gap: 40px 0;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
